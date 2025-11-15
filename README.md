@@ -10,6 +10,13 @@ Includes examples across multiple domains:
 
 ---
 
+## 📋 Projects List
+
+1. **Hello World** - Basic Python introduction
+2. **Calculator** - Basic arithmetic operations with user input
+
+---
+
 ## ⚙️ Setup
 
 Create a virtual environment using [uv](https://github.com/astral-sh/uv):
