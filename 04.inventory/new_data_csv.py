@@ -1,5 +1,10 @@
+"""
+Purpose: Append a new product to products.csv.
+Demonstrates writing to CSV using DictWriter with mode='a' (append).
+"""
 import csv
 
+# Define new product data
 new_product = {
   'name': 'Wireless Charger',
   'price': 75,
@@ -9,6 +14,7 @@ new_product = {
   'entry_date': '2024-07-01'
 }
 
+# Append new product to CSV file
 with open('products.csv', mode='a', newline='') as file:
   file.write('\n')
   csv_writer = csv.DictWriter(file, fieldnames = new_product.keys())

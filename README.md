@@ -14,6 +14,9 @@ Includes examples across multiple domains:
 
 1. **Hello World** - Basic Python introduction
 2. **Calculator** - Basic arithmetic operations with user input
+3. **Point** - Object-oriented programming with 2D coordinate points
+4. **Inventory** - CSV file operations for product management
+5. **FastAPI** - API development (in progress)
 
 ---
 
