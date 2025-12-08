@@ -23,3 +23,31 @@ Create a virtual environment using [uv](https://github.com/astral-sh/uv):
 
 ```bash
 uv venv --python 3.11
+source .venv/bin/activate  # Linux/macOS
+```
+
+## Dependency Management
+
+Dependencies are managed in `pyproject.toml`. Common commands:
+
+**Install all dependencies** (fresh setup on new machine):
+```bash
+uv sync
+```
+
+**Add new dependencies**:
+```bash
+uv add package-name
+uv add "fastapi[standard]"  # with extras
+```
+
+**Remove dependencies**:
+```bash
+uv remove package-name
+```
+
+**Update dependencies**:
+```bash
+uv lock --upgrade
+uv sync
+```
