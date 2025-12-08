@@ -42,6 +42,7 @@ uv sync
 ```bash
 uv add package-name
 uv add "fastapi[standard]"  # with extras
+uv pip install <package>  # works too
 ```
 
 **Remove dependencies**:
@@ -54,3 +55,25 @@ uv remove package-name
 uv lock --upgrade
 uv sync
 ```
+
+## Running FastAPI Projects
+
+**Development server with auto-reload**:
+```bash
+fastapi dev 05.FastAPI/main.py
+```
+
+**Production server**:
+```bash
+fastapi run 05.FastAPI/main.py
+```
+
+**Alternative using uvicorn directly**:
+```bash
+uvicorn 05.FastAPI.main:app --reload  # development
+uvicorn 05.FastAPI.main:app           # production
+```
+
+**Access interactive documentation**:
+- Swagger UI: http://localhost:8000/docs
+- ReDoc: http://localhost:8000/redoc
