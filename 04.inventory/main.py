@@ -1,10 +1,10 @@
 import csv
 
 #Leer un archivo
-"""with open('products.csv', mode='r') as file:
+with open('products.csv', mode='r') as file:
   csv_reader = csv.DictReader(file)
   for row in csv_reader:
-    print(row)"""
+    print(row)
 
 # Mostrar la información por columnas
 """with open('products.csv', mode='r') as file:
