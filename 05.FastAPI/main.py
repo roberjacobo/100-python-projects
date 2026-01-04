@@ -1,10 +1,11 @@
+from db import SessionDep, create_all_tables
 from fastapi import FastAPI, HTTPException
 from models import Customer, CustomerCreate, Transaction, Invoice
 from datetime import datetime
 import zoneinfo
 
 
-app = FastAPI(title="Learning FastAPI", version="1.0.0")
+app = FastAPI(title="Learning FastAPI", version="1.0.0", lifespan=create_all_tables)
 
 # In-memory database (simple list)
 db_customers: list[Customer] = []
@@ -81,7 +82,7 @@ async def get_time(iso_code: str):
 # ================================================================================
 
 @app.post("/customers", response_model=Customer, status_code=201)
-async def create_customer(customer_data: CustomerCreate):
+async def create_customer(customer_data: CustomerCreate, session: SessionDep):
     """Create a new customer"""
     customer = Customer.model_validate(customer_data.model_dump())
     customer.id = len(db_customers) + 1
