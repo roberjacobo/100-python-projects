@@ -2,6 +2,7 @@ from db import SessionDep, create_all_tables
 from fastapi import FastAPI, HTTPException
 from models import Customer, CustomerCreate, Transaction, Invoice
 from datetime import datetime
+from sqlmodel import select
 import zoneinfo
 
 
@@ -85,15 +86,16 @@ async def get_time(iso_code: str):
 async def create_customer(customer_data: CustomerCreate, session: SessionDep):
     """Create a new customer"""
     customer = Customer.model_validate(customer_data.model_dump())
-    customer.id = len(db_customers) + 1
-    db_customers.append(customer)
+    session.add(customer)
+    session.commit()
+    session.refresh(customer)
     return customer
 
 
 @app.get("/customers", response_model=list[Customer])
-async def list_customers():
+async def list_customers(session: SessionDep):
     """Get all customers"""
-    return db_customers
+    return session.exec(select(Customer)).all()
 
 
 @app.get("/customers/{customer_id}", response_model=Customer)
